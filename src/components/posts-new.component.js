@@ -7,6 +7,7 @@ const inputField = (field, label) => {
     <div className="form-group">
       <label>{field.label}</label>
       <input className="form-control" type="text" {...field.input} />
+      {field.meta.error}
     </div>
   )
 }
@@ -38,7 +39,7 @@ function validate(values) {
 
   // if errors is empty, then ok.
   // if erros has any properties, then redux form assumes for is invalid
-  return errors
+  return errors;
 }
 
 
