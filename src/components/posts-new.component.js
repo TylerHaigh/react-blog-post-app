@@ -14,13 +14,23 @@ const inputField = (field, label) => {
 
 
 class PostsNew extends Component {
+
+  onSubmit(values) {
+    console.log(values);
+  }
+
+
   render() {
 
+    const {handleSubmit} = this.props;
+
     return (
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field name="title" label="Title for Post" component={inputField} />
           <Field name="categories" label="Categories" component={inputField} />
-          <Field name="context" label="Post Content" component={inputField} />
+          <Field name="content" label="Post Content" component={inputField} />
+
+          <button type="submit" className="btn btn_primary">Submit</button>
         </form>
     );
   }
