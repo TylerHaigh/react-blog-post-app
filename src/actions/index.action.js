@@ -9,7 +9,7 @@ const API_KEY = 'FlyingSpaceMonkeysWearingUnderpants'
 export function fetchPosts() {
     const url = `${ROOT_URL}/posts?key=${API_KEY}`
     const request = axios.get(url)
-    
+
     return {
         type: FETCH_POSTS,
         payload: request
