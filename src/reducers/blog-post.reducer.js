@@ -2,7 +2,7 @@ import _ from 'lodash'
 
 import { FETCH_POSTS } from '../actions/index.action';
 
-export default function(state = null, action) {
+export default function(state = {}, action) {
 
     // ReactPromise is meant to stop action from being sent through
     // but for some reason, the action payload is undefined on the first iteration...
