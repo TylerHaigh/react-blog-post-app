@@ -8,6 +8,8 @@ import {fetchPost} from '../actions/index.action';
 class PostsShow extends Component {
     
     componentDidMount() {
+        // may want to add a check to see if we have already downloaded the post
+        // to reduce network calls
         const {id} = this.props.match.params;
         this.props.fetchPost(id);
 
