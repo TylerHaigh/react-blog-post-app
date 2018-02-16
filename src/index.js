@@ -2,26 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import promise from "redux-promise";
 
-import {BrowserRouter, Route} from 'react-router-dom'
+import reducers from "./reducers/index.reducer";
+import PostsIndex from "./components/posts-index.component";
+import PostsNew from "./components/posts-new.component";
 
-import reducers from './reducers/index.reducer';
-import PostsIndex from "./components/posts.component";
-import ReduxPromise from 'redux-promise'
-
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)} >
-      <BrowserRouter>
-        <div>
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route path="/posts/new" component={PostsNew} />
           <Route path="/" component={PostsIndex} />
-        </div>
-      </BrowserRouter>
-    </Provider>,
+        </Switch>
+      </div>
+    </BrowserRouter>
+  </Provider>,
   document.querySelector(".container")
 );
-
-
-// npm install --save react-router-dom@4.0.0
